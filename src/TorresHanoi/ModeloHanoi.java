@@ -8,19 +8,17 @@ public class ModeloHanoi {
 	private int contador;
 	
 	public ModeloHanoi() {
-		this.movimientos= new ArrayList();
-		this.contador=0;
 	}
 	public ArrayList getMovimientos(int discos) {
 		this.contador=0;
 		this.movimientos= new ArrayList();
 		
-		Hanoi(discos,1,2,3);
+		Hanoi(discos,'A','B','C');
 		
 		return movimientos;
 	}
 	//Método Torres de Hanoi Recursivo
-    public void Hanoi(int n, int origen,  int auxiliar, int destino){
+    public void Hanoi(int n, char origen,  char auxiliar, char destino){
         if(n==1){
         	creaMov(n,origen,destino);
         	
@@ -32,33 +30,16 @@ public class ModeloHanoi {
         }
         
     }
-    public void creaMov(int n,int origen,int destino) {
+    public void creaMov(int n,char origen,char destino) {
     	Vector fila = new Vector();
     	contador++;
-    	String torreOrigen = "";
-    	String torreDestino = "";
-    	
-    	torreOrigen = identificaTorre(origen)+"";
-    	torreDestino = identificaTorre(destino)+"";
-    	
+	
     	fila.addElement(contador);
     	fila.addElement(n);
-    	fila.addElement(torreOrigen);
-    	fila.addElement(torreDestino);
+    	fila.addElement(origen);
+    	fila.addElement(destino);
     	
     	movimientos.add(fila);
     	
-    }
-    private char identificaTorre(int t) {
-    	char torre='A';
-    	switch (t) {
-    		case 1: torre = 'A';
-    		break;
-    		case 2: torre = 'B';
-    		break;
-    		case 3: torre = 'C';
-    		break;
-    	}
-    	return torre;
     }
 }
